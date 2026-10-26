@@ -1585,7 +1585,7 @@
             <div class="stat-card">
                 <div class="stat-icon emerald">📦</div>
                 <div class="stat-info">
-                    <span class="stat-label">Vínculos con Productos (@ManyToMany)</span>
+                    <span class="stat-label">Vínculos con Productos</span>
                     <span class="stat-value" id="stat-vinculos">0</span>
                 </div>
             </div>
@@ -1604,8 +1604,6 @@
             <div class="section-header">
                 <div class="section-title">
                     <h2>Directorio de Proveedores Comerciales</h2>
-                    <p>Relación ORM Hibernate <code>@ManyToMany</code> mediante tabla de unión
-                        <code>productos_proveedores</code></p>
                 </div>
                 <div style="display: flex; align-items: center; gap: 12px;">
                     <span id="contador-filtrados" style="font-size: 0.85rem; font-weight: 600; color: #a78bfa;">
@@ -1761,38 +1759,6 @@
                         </li>
                     </ul>
                 </div>
-
-                <!-- Columna 4: Navegación & Estado -->
-                <div class="footer-col">
-                    <h4 class="footer-col-title">
-                        <span class="title-icon">🧭</span> Acceso Rápido
-                    </h4>
-                    <div class="footer-nav-links">
-                        <a href="/" class="footer-link">
-                            <span>🛒</span> Catálogo de Productos
-                        </a>
-                        <a href="/proveedores" class="footer-link">
-                            <span>🏢</span> Directorio de Proveedores
-                        </a>
-                        <a href="javascript:void(0)" onclick="abrirModalProveedor()" class="footer-link">
-                            <span>➕</span> Registrar Nuevo Proveedor
-                        </a>
-                        <a href="javascript:void(0)" onclick="window.scrollTo({top: 0, behavior: 'smooth'})"
-                            class="footer-link back-to-top">
-                            <span>⬆️</span> Volver arriba
-                        </a>
-                    </div>
-
-                    <div class="footer-server-card">
-                        <div class="server-status-row">
-                            <span class="server-status-dot"></span>
-                            <span class="server-title">Servidor Local HTTP</span>
-                        </div>
-                        <div class="server-endpoint">
-                            <code>http://localhost:8080/api</code>
-                        </div>
-                    </div>
-                </div>
             </div>
 
             <!-- Footer Bottom Bar -->
@@ -1818,8 +1784,7 @@
             <div class="modal-header">
                 <div>
                     <h3 id="modal-prov-titulo">➕ Registrar Nuevo Proveedor</h3>
-                    <span style="font-size: 0.8rem; color: #a78bfa;">Persistencia JPA en tabla <code>proveedores</code>
-                        con Hibernate</span>
+                    <span style="font-size: 0.8rem; color: #a78bfa;"></span>
                 </div>
                 <button class="modal-close" onclick="cerrarModalProveedor()">✕</button>
             </div>
@@ -1861,7 +1826,7 @@
                 <div class="modal-footer">
                     <button type="button" class="btn-outline" onclick="cerrarModalProveedor()">Cancelar</button>
                     <button type="submit" class="btn-primary" id="btn-submit-prov">
-                        💾 Persistir Proveedor (Hibernate)
+                        💾 Persistir Proveedor
                     </button>
                 </div>
             </form>
@@ -2159,7 +2124,7 @@
             document.getElementById('form-proveedor').reset();
             document.getElementById('proveedorId').value = '';
             document.getElementById('modal-prov-titulo').innerText = '➕ Registrar Nuevo Proveedor';
-            document.getElementById('btn-submit-prov').innerText = '💾 Persistir Proveedor (Hibernate)';
+            document.getElementById('btn-submit-prov').innerText = '💾 Persistir Proveedor';
             const nextNum = (proveedoresList.length + 1).toString().padStart(3, '0');
             document.getElementById('provNit').value = '900.' + nextNum + '.100-1';
             document.getElementById('modal-proveedor').classList.add('active');
@@ -2177,7 +2142,7 @@
             document.getElementById('provEmail').value = p.email || '';
 
             document.getElementById('modal-prov-titulo').innerText = '✏️ Actualizar Proveedor (' + p.nit + ')';
-            document.getElementById('btn-submit-prov').innerText = '💾 Guardar Cambios (Hibernate)';
+            document.getElementById('btn-submit-prov').innerText = '💾 Guardar Cambios';
             document.getElementById('modal-proveedor').classList.add('active');
         }
 
@@ -2227,7 +2192,7 @@
                 mostrarToast("Error en la solicitud: " + err.message, 'error');
             } finally {
                 btn.disabled = false;
-                btn.innerText = esActualizar ? '💾 Guardar Cambios (Hibernate)' : '💾 Persistir Proveedor (Hibernate)';
+                btn.innerText = esActualizar ? '💾 Guardar Cambios' : '💾 Persistir Proveedor';
             }
         }
 

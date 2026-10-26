@@ -1851,10 +1851,6 @@
                     </div>
                     <div class="brand-subtitle-row">
                         <span class="status-live-dot" title="Sistema ORM conectado"></span>
-                        <span class="brand-meta">SENA CIMM Sogamoso</span>
-                        <span class="meta-separator">•</span>
-                        <span class="tech-tag">Hibernate 6.5</span>
-                        <span class="tech-tag">MySQL 8</span>
                     </div>
                 </div>
             </div>
@@ -1872,10 +1868,6 @@
             </nav>
 
             <div class="nav-actions">
-                <div class="system-status-chip" title="Servidor REST nativo en puerto 8080">
-                    <span class="pulse-indicator"></span>
-                    <span>API :8080</span>
-                </div>
                 <button class="btn-outline" onclick="abrirModalCategorias()" title="Gestionar categorías en base de datos">
                     📁 Categorías
                 </button>
@@ -1929,7 +1921,6 @@
             <div class="section-header">
                 <div class="section-title">
                     <h2>Inventario de Productos en Supermercado</h2>
-                    <p>Relaciones ORM Hibernate: <code>@ManyToOne</code> Categoría • <code>@OneToOne</code> Ficha Nutricional • <code>@ManyToMany</code> Proveedores</p>
                 </div>
                 <div style="display: flex; align-items: center; gap: 12px;">
                     <span id="contador-filtrados" style="font-size: 0.85rem; font-weight: 600; color: #94a3b8;">
@@ -2018,7 +2009,7 @@
                     </div>
                 </div>
 
-                <!-- Columna 2: Stack Tecnológico -->
+                <!-- Columna 2: Stack Tecnológico -->   
                 <div class="footer-col">
                     <h4 class="footer-col-title">
                         <span class="title-icon">⚡</span> Arquitectura & Stack
@@ -2084,37 +2075,6 @@
                         </li>
                     </ul>
                 </div>
-
-                <!-- Columna 4: Navegación & Estado -->
-                <div class="footer-col">
-                    <h4 class="footer-col-title">
-                        <span class="title-icon">🧭</span> Acceso Rápido
-                    </h4>
-                    <div class="footer-nav-links">
-                        <a href="/" class="footer-link">
-                            <span>🛒</span> Catálogo de Productos
-                        </a>
-                        <a href="/proveedores" class="footer-link">
-                            <span>🏢</span> Directorio de Proveedores
-                        </a>
-                        <a href="javascript:void(0)" onclick="abrirModalCategorias()" class="footer-link">
-                            <span>📁</span> Gestión de Categorías
-                        </a>
-                        <a href="javascript:void(0)" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="footer-link back-to-top">
-                            <span>⬆️</span> Volver arriba
-                        </a>
-                    </div>
-
-                    <div class="footer-server-card">
-                        <div class="server-status-row">
-                            <span class="server-status-dot"></span>
-                            <span class="server-title">Servidor Local HTTP</span>
-                        </div>
-                        <div class="server-endpoint">
-                            <code>http://localhost:8080/api</code>
-                        </div>
-                    </div>
-                </div>
             </div>
 
             <!-- Footer Bottom Bar -->
@@ -2148,7 +2108,7 @@
                             <input type="text" id="codigo" required placeholder="Ej: MKT-018" autocomplete="off">
                         </div>
                         <div class="form-group">
-                            <label for="categoria">Categoría Comercial (@ManyToOne) *</label>
+                            <label for="categoria">Categoría Comercial*</label>
                             <select id="categoria" required>
                                 <!-- Se llena dinámicamente con cargarCategorias() -->
                             </select>
@@ -2188,7 +2148,7 @@
 
                         <!-- SECCIÓN 1: FICHA NUTRICIONAL (@OneToOne con CascadeType.ALL) -->
                         <div class="form-group col-span-2 section-divider">
-                            <span class="section-legend">🥗 Ficha Nutricional e INVIMA (@OneToOne · CascadeType.ALL)</span>
+                            <span class="section-legend">🥗 Ficha Nutricional e INVIMA</span>
                         </div>
                         <div class="form-group">
                             <label for="fichaCalorias">Calorías (kcal)</label>
@@ -2222,7 +2182,7 @@
                         <!-- SECCIÓN 2: PROVEEDORES ASOCIADOS (@ManyToMany) -->
                         <div class="form-group col-span-2 section-divider">
                             <div style="display: flex; justify-content: space-between; align-items: center;">
-                                <span class="section-legend">🏢 Proveedores del Producto (@ManyToMany · Tabla Intermedia)</span>
+                                <span class="section-legend">🏢 Proveedores del Producto</span>
                                 <span style="font-size: 0.74rem; color: var(--text-muted);">Asocia 1 o más proveedores</span>
                             </div>
                         </div>
@@ -2247,7 +2207,7 @@
     <div class="modal-overlay" id="modal-categorias">
         <div class="modal-box" style="max-width: 780px;">
             <div class="modal-header">
-                <h3>📁 Gestión de Categorías Comerciales (Hibernate ORM)</h3>
+                <h3>📁 Gestión de Categorías Comerciales</h3>
                 <button class="modal-close" onclick="cerrarModalCategorias()">✕</button>
             </div>
             <div class="modal-body" style="display: flex; flex-direction: column; gap: 22px;">
@@ -2295,7 +2255,7 @@
                 <div>
                     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
                         <h4 style="font-size: 0.85rem; font-weight: 700; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.6px;">
-                            Categorías Registradas en Base de Datos
+                            Categorías Registradas
                         </h4>
                         <span id="cat-contador" style="font-size: 0.8rem; color: #34d399; font-weight: 600;"></span>
                     </div>
@@ -3038,7 +2998,7 @@
                 mostrarToast("Error en la solicitud: " + err.message, 'error');
             } finally {
                 btn.disabled = false;
-                btn.innerText = esActualizar ? '💾 Guardar Cambios (Hibernate)' : '💾 Persistir en MySQL (Hibernate)';
+                btn.innerText = esActualizar ? '💾 Guardar Cambios' : '💾 Guardar cambios';
             }
         }
 
@@ -3046,7 +3006,7 @@
             document.getElementById('form-producto').reset();
             document.getElementById('productoId').value = '';
             document.getElementById('modal-titulo').innerText = '➕ Registrar Nuevo Producto';
-            document.getElementById('btn-submit').innerText = '💾 Persistir en MySQL (Hibernate)';
+            document.getElementById('btn-submit').innerText = '💾 Registrar producto';
             const nextNum = (productosList.length + 1).toString().padStart(3, '0');
             document.getElementById('codigo').value = 'MKT-' + nextNum;
 
@@ -3105,7 +3065,7 @@
             renderProveedoresCheckboxes(proveedoresList, assignedIds);
 
             document.getElementById('modal-titulo').innerText = '✏️ Actualizar Producto (' + p.codigo + ')';
-            document.getElementById('btn-submit').innerText = '💾 Guardar Cambios (Hibernate)';
+            document.getElementById('btn-submit').innerText = '💾 Guardar Cambios';
             document.getElementById('modal-nuevo').classList.add('active');
         }
 
